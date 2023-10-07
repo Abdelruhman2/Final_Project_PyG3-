@@ -1,0 +1,38 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block title %} All Borrowings {% endblock %}
+
+{% block body %}
+<div class="bg-light">
+    <h1>All Borrowings</h1>
+    <style>
+        
+        .borrowings-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .borrowing-item {
+            background-color: #f0f0f0;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .borrowing-label {
+            font-weight: bold;
+        }
+    </style>
+    <ul class="borrowings-list" >
+        {% for borrowing in borrowings %}
+            <li class="borrowing-item">
+                <span class="borrowing-label">User:</span> {{ borrowing.user_name }}<br>
+                <span class="borrowing-label">Book:</span> {{ borrowing.book_name }}<br>
+                <span class="borrowing-label">Borrowed Date:</span> {{ borrowing.borrowed_date }}
+            </li>
+        {% endfor %}
+        
+    </ul>
+</div>
+<a href="{% url 'library.home' %}" class="btn btn-primary" >Back to all Books</a>
+{% endblock %}

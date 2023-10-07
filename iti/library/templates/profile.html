@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'library/css/styles.css' %}">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-center mb-4">Welcome, {{ user.username }}</h1>
+                    <h1 class="text-center mb-4">Your ID is: {{ user.id }}</h1>
+
+                    <h2 class="text-center mb-3">Change Password</h2>
+                    <form method="post" action="{% url 'library.password_change_form' %}">
+                        {% csrf_token %}
+                        {{ password_change_form.as_p }}
+                        <button type="submit" class="btn btn-primary btn-block">Change Password</button>
+                    </form>
+
+                    <h2 class="text-center mb-3 mt-4">Delete Account</h2>
+                    <form method="post" action="{% url 'library.delete_account_confirmation' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-block">Delete Account</button>
+                    </form>
+
+                    <h2 class="text-center mb-3 mt-4">Your Borrowed Books</h2>
+                    <ul class="list-group">
+                        {% for borrowing in user_borrowings %}
+                            <li class="list-group-item">
+                                <style>
+                                    .bold-text {
+                                        color: 	#990000 ;
+                                    }
+                                </style>
+                                
+                                <h5>Book: <strong class="bold-text">{{ borrowing.book_name }}</strong> and Date: <strong class="bold-text">{{ borrowing.borrowed_date }}</strong></h5>
+                                <h5> Deadline: <strong class="bold-text">{{ borrowing.deadline|date:"F d, Y" }}</strong></h5>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

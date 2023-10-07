@@ -1,0 +1,40 @@
+/* تخصيص استايل العناوين */
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* تخصيص استايل حقول الإدخال وتصميم النموذج */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* تخصيص استايل تسمية حقل الإدخال */
+label {
+    font-weight: bold;
+}
+
+/* تخصيص استايل حقول الإدخال نفسها */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* تخصيص استايل زر التسجيل */
+button[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* تخصيص استايل التعليمات */
+small.form-text {
+    color: #777;
+    font-size: 12px;
+}
